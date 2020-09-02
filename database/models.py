@@ -1,4 +1,5 @@
 import os
+from flask import abort
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, String, Integer, create_engine, DateTime, ForeignKey
 from flask_migrate import Migrate
@@ -41,21 +42,34 @@ class Actor(db.Model):
         self.gender = gender
 
     def insert(self):
-        db.session.add(self)
-        db.session.commit()
+        try:
+            db.session.add(self)
+            db.session.commit()
+        except Exception:
+            db.session.rollback()
+            abort(500)
+        finally:
+            db.session.close()
 
     def update(self):
-        db.session.commit()
+        try:
+            db.session.commit()
+        except Exception:
+            db.session.rollback()
+            abort(500)
+        finally:
+            db.session.close()
 
     def delete(self):
-        db.session.delete(self)
-        db.session.commit()
+        try:
+            db.session.delete(self)
+            db.session.commit()
+        except Exception:
+            db.session.rollback()
+            abort(500)
+        finally:
+            db.session.close()
 
-    def rollback(self):
-        db.session.rollback()
-        
-    def close(self):
-        db.session.close()
 
     def formate(self):
         return {
@@ -79,21 +93,33 @@ class Movie(db.Model):
         self.release_date = release_date
 
     def insert(self):
-        db.session.add(self)
-        db.session.commit()
+        try:
+            db.session.add(self)
+            db.session.commit()
+        except Exception:
+            db.session.rollback()
+            abort(500)
+        finally:
+            db.session.close()
 
     def update(self):
-        db.session.commit()
+        try:
+            db.session.commit()
+        except Exception:
+            db.session.rollback()
+            abort(500)
+        finally:
+            db.session.close()
 
     def delete(self):
-        db.session.delete(self)
-        db.session.commit()
-
-    def rollback(self):
-        db.session.rollback()
-        
-    def close(self):
-        db.session.close()
+        try:
+            db.session.delete(self)
+            db.session.commit()
+        except Exception:
+            db.session.rollback()
+            abort(500)
+        finally:
+            db.session.close()
 
     def formate(self):
         return {
@@ -113,21 +139,33 @@ class Show(db.Model):
         self.movie_id = movie_id
 
     def insert(self):
-        db.session.add(self)
-        db.session.commit()
+        try:
+            db.session.add(self)
+            db.session.commit()
+        except Exception:
+            db.session.rollback()
+            abort(500)
+        finally:
+            db.session.close()
 
     def update(self):
-        db.session.commit()
+        try:
+            db.session.commit()
+        except Exception:
+            db.session.rollback()
+            abort(500)
+        finally:
+            db.session.close()
 
     def delete(self):
-        db.session.delete(self)
-        db.session.commit()
-
-    def rollback(self):
-        db.session.rollback()
-        
-    def close(self):
-        db.session.close()
+        try:
+            db.session.delete(self)
+            db.session.commit()
+        except Exception:
+            db.session.rollback()
+            abort(500)
+        finally:
+            db.session.close()
 
     def formate(self):
         return {
