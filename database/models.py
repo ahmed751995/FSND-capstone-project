@@ -33,7 +33,7 @@ class Actor(db.Model):
     name = Column(String, nullable=False)
     age = Column(Integer)
     gender = Column(String)
-    movies = db.relationship('Show', backref='actors', lazy=True)
+    shows = db.relationship('Show', backref='actors', lazy=True)
 
     def __init__(self, name, age, gender):
         self.name = name
@@ -72,7 +72,7 @@ class Movie(db.Model):
     id = Column(Integer, primary_key=True)
     title = Column(String, nullable=False)
     release_date = Column(DateTime)
-    actors = db.relationship('Show', backref='movies', lazy=True)
+    shows = db.relationship('Show', backref='movies', lazy=True)
 
     def __init__(self, title, release_date):
         self.title = title
