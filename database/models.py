@@ -34,7 +34,7 @@ class Actor(db.Model):
     name = Column(String, nullable=False)
     age = Column(Integer)
     gender = Column(String)
-    shows = db.relationship('Show', backref='actors', lazy=True)
+    shows = db.relationship('Show', backref='actors', cascade="all, delete", lazy=True)
 
     def __init__(self, name, age, gender):
         self.name = name
@@ -42,34 +42,15 @@ class Actor(db.Model):
         self.gender = gender
 
     def insert(self):
-        try:
-            db.session.add(self)
-            db.session.commit()
-        except Exception:
-            db.session.rollback()
-            abort(500)
-        finally:
-            db.session.close()
+        db.session.add(self)
+        db.session.commit()
 
     def update(self):
-        try:
-            db.session.commit()
-        except Exception:
-            db.session.rollback()
-            abort(500)
-        finally:
-            db.session.close()
+        db.session.commit()
 
     def delete(self):
-        try:
-            db.session.delete(self)
-            db.session.commit()
-        except Exception:
-            db.session.rollback()
-            abort(500)
-        finally:
-            db.session.close()
-
+        db.session.delete(self)
+        db.session.commit()
 
     def formate(self):
         return {
@@ -86,40 +67,22 @@ class Movie(db.Model):
     id = Column(Integer, primary_key=True)
     title = Column(String, nullable=False)
     release_date = Column(DateTime)
-    shows = db.relationship('Show', backref='movies', lazy=True)
+    shows = db.relationship('Show', backref='movies', cascade="all, delete", lazy=True)
 
     def __init__(self, title, release_date):
         self.title = title
         self.release_date = release_date
 
     def insert(self):
-        try:
-            db.session.add(self)
-            db.session.commit()
-        except Exception:
-            db.session.rollback()
-            abort(500)
-        finally:
-            db.session.close()
+        db.session.add(self)
+        db.session.commit()
 
     def update(self):
-        try:
-            db.session.commit()
-        except Exception:
-            db.session.rollback()
-            abort(500)
-        finally:
-            db.session.close()
+        db.session.commit()
 
     def delete(self):
-        try:
-            db.session.delete(self)
-            db.session.commit()
-        except Exception:
-            db.session.rollback()
-            abort(500)
-        finally:
-            db.session.close()
+        db.session.delete(self)
+        db.session.commit()
 
     def formate(self):
         return {
@@ -139,33 +102,15 @@ class Show(db.Model):
         self.movie_id = movie_id
 
     def insert(self):
-        try:
-            db.session.add(self)
-            db.session.commit()
-        except Exception:
-            db.session.rollback()
-            abort(500)
-        finally:
-            db.session.close()
+        db.session.add(self)
+        db.session.commit()
 
     def update(self):
-        try:
-            db.session.commit()
-        except Exception:
-            db.session.rollback()
-            abort(500)
-        finally:
-            db.session.close()
+        db.session.commit()
 
     def delete(self):
-        try:
-            db.session.delete(self)
-            db.session.commit()
-        except Exception:
-            db.session.rollback()
-            abort(500)
-        finally:
-            db.session.close()
+        db.session.delete(self)
+        db.session.commit()
 
     def formate(self):
         return {
