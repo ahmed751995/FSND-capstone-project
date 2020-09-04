@@ -7,6 +7,7 @@ from app import app
 from database.models import setup_db, Actor, Movie, Show
 
 
+
 class castingAgencyTestCase(unittest.TestCase):
     """This class represents the casting agency test case"""
 
@@ -17,7 +18,7 @@ class castingAgencyTestCase(unittest.TestCase):
         self.database_name = "castingAgency_test"
         self.database_path = "postgres:///" + self.database_name
         setup_db(self.app, self.database_path)
-
+        
         # binds the app to the current context
         with self.app.app_context():
             self.db = SQLAlchemy()
