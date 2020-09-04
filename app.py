@@ -118,7 +118,7 @@ def post_movie(payload):
     
     except Exception:
         db.session.rollback()
-        abort(AuthError)
+        abort(400)
     finally:
         db.session.close()
 
@@ -141,12 +141,11 @@ def post_actor(payload):
         })
     
     except Exception:
-        # db.session.rollback()
-        # abort(400)
-        abort(AuthError)
+        db.session.rollback()
+        abort(400)
 
-    # finally:
-        # db.session.close()
+    finally:
+        db.session.close()
     
 
 @app.route('/movies/<int:movie_id>', methods=['PATCH'])
@@ -204,10 +203,10 @@ def patch_actor(payload, actor_id):
             'success': True
         })
     except Exception:
-        # db.session.rollback()
-        abort(AuthError)
-    # finally:
-        # db.session.close()
+        db.session.rollback()
+        abort(404)
+    finally:
+        db.session.close()
 
 
 
