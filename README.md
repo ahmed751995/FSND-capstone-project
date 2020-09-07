@@ -60,6 +60,7 @@ the app run locally and on live server
 
 ## roles
 the app has three roles:
+
 * Casting Assistant
  - Can view actors and movies
 
