@@ -208,7 +208,9 @@ def patch_actor(payload, actor_id):
     finally:
         db.session.close()
 
-
+@app.route('/')
+def index():
+    return 'The app is ready :D'
 
 
 
