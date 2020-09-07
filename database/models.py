@@ -14,13 +14,14 @@ db = SQLAlchemy()
 setup_db(app)
     binds a flask application and a SQLAlchemy service
 '''
+
+
 def setup_db(app, database_path=database_path):
     app.config["SQLALCHEMY_DATABASE_URI"] = database_path
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.app = app
     db.init_app(app)
     # migrate = Migrate(app, db)
-
 
 
 #----------------------------------------------------------------------------#
@@ -34,7 +35,11 @@ class Actor(db.Model):
     name = Column(String, nullable=False)
     age = Column(Integer)
     gender = Column(String)
-    shows = db.relationship('Show', backref='actors', cascade="all, delete", lazy=True)
+    shows = db.relationship(
+        'Show',
+        backref='actors',
+        cascade="all, delete",
+        lazy=True)
 
     def __init__(self, name, age, gender):
         self.name = name
@@ -59,7 +64,7 @@ class Actor(db.Model):
             'age': self.age,
             'gender': self.gender
         }
-    
+
 
 class Movie(db.Model):
     __tablename__ = 'Movie'
@@ -67,7 +72,11 @@ class Movie(db.Model):
     id = Column(Integer, primary_key=True)
     title = Column(String, nullable=False)
     release_date = Column(DateTime)
-    shows = db.relationship('Show', backref='movies', cascade="all, delete", lazy=True)
+    shows = db.relationship(
+        'Show',
+        backref='movies',
+        cascade="all, delete",
+        lazy=True)
 
     def __init__(self, title, release_date):
         self.title = title
@@ -90,6 +99,7 @@ class Movie(db.Model):
             'title': self.title,
             'release_date': self.release_date
         }
+
 
 class Show(db.Model):
     __tablename__ = 'Show'

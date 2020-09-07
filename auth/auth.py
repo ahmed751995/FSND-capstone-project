@@ -53,7 +53,6 @@ def get_token_auth_header():
     return token
 
 
-
 def check_permissions(permission, payload):
     if 'permissions' not in payload:
         raise AuthError({
@@ -67,7 +66,6 @@ def check_permissions(permission, payload):
             'description': 'Permission not found.'
         }, 401)
     return True
-
 
 
 def verify_decode_jwt(token):
@@ -122,8 +120,6 @@ def verify_decode_jwt(token):
         'code': 'invalid_header',
                 'description': 'Unable to find the appropriate key.'
     }, 400)
-
-
 
 
 def requires_auth(permission=''):
