@@ -1,3 +1,4 @@
+
 # Full Stack Nano Degree Capstone Project : Casting Agency
 
 
@@ -31,16 +32,15 @@ This will install all of the required packages we selected within the `requireme
 - [Flask-CORS](https://flask-cors.readthedocs.io/en/latest/#) is the extension we'll use to handle cross origin requests from our frontend server. 
 
 ## Database Setup
-With Postgres running, restore a database using the trivia.psql file provided. From the backend folder in terminal run:
+from the same directory in terminal run:
 
 ```bash
 createdb castingAgency 
-
 ```
 
 ## Running the server
 
-run in terminal the run.sh file which contains all commands needed to run the server
+you can choose the live server or run in terminal the run.sh file which contains all commands needed to run the server
 
 To run the server, execute:
 
@@ -52,7 +52,7 @@ bash run.sh
 
 ## Getting started	
 
-the app run locally and on live server
+the app runs locally and on live server
 
 * live server Url: https://fsnd-capstone-ahmed751995.herokuapp.com/
 
@@ -62,16 +62,16 @@ the app run locally and on live server
 the app has three roles:
 
 * Casting Assistant
- - Can view actors and movies
+  - Can view actors and movies
 
 * Casting Director
- - All permissions a Casting Assistant has and…
- - Add or delete an actor from the database
- - Modify actors or movies
+  - All permissions a Casting Assistant has and…
+  - Add or delete an actor from the database
+  - Modify actors or movies
 
 * Executive Producer
- - All permissions a Casting Director has
- - Add or delete a movie from the database
+  - All permissions a Casting Director has
+  - Add or delete a movie from the database
 
 each request should contains a valid jwt Token by which the role and permissions are determined.
 
@@ -102,7 +102,7 @@ the API will return an error when requests fail:
 
 * General
   * return an object of all movies in the database with success value
-* sample: curl  BaseUrl/movies
+* sample: curl  BaseUrl/movies --header 'Authorization: Bearer $TOKEN'
 
 * the GET request should contains a valid jwt token
 	
@@ -125,41 +125,11 @@ the API will return an error when requests fail:
 
 ```
 
-
 [GET/actors]()
 
 * General
   * return an object of all actors in the database with success value
-* sample: curl  BaseUrl/actors
-
-* the GET request should contains a valid jwt token
-	
-```json
-{
-    "actors": [
-        {
-            "age": 40,
-            "gender": "male",
-            "id": 2,
-            "name": "Ahmed"
-        },
-        {
-            "age": 18,
-            "gender": "male",
-            "id": 4,
-            "name": "saif"
-        }
-    ],
-    "success": true
-}
-
-```
-
-[GET/actors]()
-
-* General
-  * return an object of all actors in the database with success value
-* sample: curl  BaseUrl/actors
+* sample: curl  BaseUrl/actors --header 'Authorization: Bearer $TOKEN'
 
 * the GET request should contains a valid jwt token
 	
@@ -289,7 +259,7 @@ the API will return an error when requests fail:
 
 
 # Test Reference
-this app contains postman and unittest,choose the one that is more convenient to you.
+this app contains postman and unittest, choose the one that is more convenient to you.
 
 ## postman
 
