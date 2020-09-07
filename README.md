@@ -1,6 +1,7 @@
 
 # Full Stack Nano Degree Capstone Project : Casting Agency
 
+The Casting Agency models a company that is responsible for creating movies and managing and assigning actors to those movies. You are an Executive Producer within the company and are creating a system to simplify and streamline your process.
 
 ## Getting Started
 ### Installing Dependencies
@@ -52,7 +53,7 @@ bash run.sh
 
 ## Getting started	
 
-the app runs locally and on live server
+the app runs locally and on a live server
 
 * live server Url: https://fsnd-capstone-ahmed751995.herokuapp.com/
 
@@ -96,6 +97,15 @@ the API will return an error when requests fail:
 * 500: internal server error
 * 404: resource not found
 * 401: Unauthorized 
+
+## setting up Authentication
+
+in the endpoints section we will use curl so instructions here will use  terminal to test the end point.
+
+BaseUrl is referring to either the ```localhost:5000``` or ```https://fsnd-capstone-ahmed751995.herokuapp.com``` so replace ```BaseUrl``` with the one that is more convenient to you .
+
+replace the ```$TOKEN``` in the sample with the token value
+ 
 
 ## Endpoints
 [GET/movies]()
@@ -174,7 +184,7 @@ the API will return an error when requests fail:
 
 * General
   * delete an actor based on the {actor id} specified on url
-  * Executive Producer and Casting Director are the only roles who have the authorization to delete an acotr
+  * Executive Producer and Casting Director are the only roles who have the authorization to delete an actor
 
 * sample: curl --location --request DELETE BaseUrl/actors/2 --header 'Authorization: Bearer $TOKEN'
 
@@ -192,7 +202,7 @@ the API will return an error when requests fail:
 
 * General
   * add new actor to the database
-  * Executive Producer and Casting Director are the only roles who have the authorization to post an acotr
+  * Executive Producer and Casting Director are the only roles who have the authorization to post an actor
 
 * sample: curl --location --request POST 'BaseUrl/actors' --header 'Authorization: Bearer $TOKEN' --header 'Content-Type: application/json' --data-raw '{"name": "saif", "age": 18, "gender": "male"}'
 
@@ -210,7 +220,7 @@ the API will return an error when requests fail:
 
 * General
   * add new movie to the database
-  * Executive Producer is the only roles who hase the authorization to post a movie
+  * Executive Producer is the only roles who has the authorization to post a movie
 
 * sample: curl --location --request POST 'BaseUrl/movies' --header 'Authorization: Bearer $TOKEN' --header 'Content-Type: application/json' --data-raw '{"title": "jumanji", "release_date":"3-2-2021"}
 
