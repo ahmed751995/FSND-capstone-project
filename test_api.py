@@ -19,19 +19,22 @@ class castingAgencyTestCase(unittest.TestCase):
         self.database_path = "postgres:///" + self.database_name
         setup_db(self.app, self.database_path)
 
+        self.assistant_token = 'Bearer ' + os.environ['assistant']
+        self.director_token = 'Bearer ' + os.environ['director']
+        self.producer_token = 'Bearer ' + os.environ['producer']
+        
         self.assistant_header = {
-  'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InRjeVJFQ1RmTjlabUF4c3I2TEV6SCJ9.eyJpc3MiOiJodHRwczovL2FobWVkNzUxOTk1LnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZjMwOWIwZGQyZjFjZDAwMzdlZmM4NGQiLCJhdWQiOiJjYXNpbmdBZ2VuY3kiLCJpYXQiOjE1OTkyNTQzOTAsImV4cCI6MTU5OTI2MTU5MCwiYXpwIjoiaWNMQ01iOThrR3l6RGU2dUZnN1Z4VG9ySGRqSUxWR1QiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImdldDphY3RvcnMiLCJnZXQ6bW92aWVzIl19.g_W8lsN4lGHQDzbCA1JISTDiYd4TzQn5NsBSR1I0GeZS6PkmkOzYjH99Hv0JuMKQuE36g_Uzym6NKSh87AcEdcy5nMXdg1ANJ6caHbAV8x5_mt4uzwgWi_yRXL2vpWqiJ9ilio2UF3XNVrApvg_ERIL1GxJ0-ZeUYOY_bKj-gSsQlBcQBqL74YSYdRyB42xxFts-x07rWMXGoHWOkZWq_sJgWgPwr2Wuq2OnR-M3IgzFv672My0tVZGS5B_yo-F7yDnRrn9AQWgAVCa-hIB8TgRi8tuTuilGoUTFI6ujsPhVPMGU6F3hUWY1e5VflQ7lR6v1tRkxqiICei7QiZ9hnQ'
-}
+            'Authorization': self.assistant_token
+        }
 
         self.director_header = {
-  'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InRjeVJFQ1RmTjlabUF4c3I2TEV6SCJ9.eyJpc3MiOiJodHRwczovL2FobWVkNzUxOTk1LnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZjMwOWJlZDY4ZGU5OTAwMzc0NmVlMTYiLCJhdWQiOiJjYXNpbmdBZ2VuY3kiLCJpYXQiOjE1OTkyNTQ3MTUsImV4cCI6MTU5OTI2MTkxNSwiYXpwIjoiaWNMQ01iOThrR3l6RGU2dUZnN1Z4VG9ySGRqSUxWR1QiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTphY3RvciIsImdldDphY3RvcnMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3IiLCJwYXRjaDptb3ZpZSIsInBvc3Q6YWN0b3IiXX0.TK70j3ly4hQVByQDlPQyWdt5WpkKgWEd_3qpLCKyIef28LBXR5ZehPkxv7TUELWDiYFuJILeaa8jXaTXzN-lM2mQxFAzGoSs--hbWNGD6WN4CmOzgtEhugl3O0yUJfXXhRNO4-3RVBfdGf2RvxbcOl-KyF8o6Wbd6wrJxzIZLq4qyHdFf_LtC9m-mcvhScikrQwD4S_kd01RKT1H7F2n1e-q7LJHHucWGnK4E8kjpMH46MZJ3LxIh1ANc2V9_TenSjIgSq-PW7NBVBmovttsVXlIUaxMT3aWAk_hY8MwOSBx6AeJfms5aHvZKmCbamLzlC6KpEdKy_3QV5OVspoXbA'
-}
-       
-
+            'Authorization': self.director_token
+        }
+        
         self.producer_header = {
-  'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InRjeVJFQ1RmTjlabUF4c3I2TEV6SCJ9.eyJpc3MiOiJodHRwczovL2FobWVkNzUxOTk1LnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZjUyNDExN2U5ZWY1ZjAwNjdiNjQyOGUiLCJhdWQiOiJjYXNpbmdBZ2VuY3kiLCJpYXQiOjE1OTkyNTQzMTQsImV4cCI6MTU5OTI2MTUxNCwiYXpwIjoiaWNMQ01iOThrR3l6RGU2dUZnN1Z4VG9ySGRqSUxWR1QiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTphY3RvciIsImRlbGV0ZTptb3ZpZSIsImdldDphY3RvcnMiLCJnZXQ6bW92aWVzIiwicGF0Y2g6YWN0b3IiLCJwYXRjaDptb3ZpZSIsInBvc3Q6YWN0b3IiLCJwb3N0Om1vdmllIl19.Jn9FWMNxlTcr-VZl32m_TwMMJ1bQJhUxgfna8jcsnxt3sLQhMw9Y25ObQ9tJTe8_LVkdIp-ex0g-t_B8QGokB10pOjnCfh66yvioeA2QHkO-Nr0AnvQbFATwOtuTM5SU2_tTjstFAEUc8RXRhNs4_r4JckSzEuLK_lHNCPH9MmTWV3bCokluZjELUM9-yD_YTqZeEsl2FTXxjjcyQmq7BQm2vTWkACE1oL39OuhAZGg3f_K4_qWX4AxfRWyeiVcAGGeXGFCvPS8vjzuQSKbobn0YxtWbkGn0_UCxyfP9Z1jPudon42NwsV6P6Mz04r9McNrR3jd1U5uaPWh8xmHR2g'
-}
-
+            'Authorization': self.producer_token
+        }
+        
 
         
         # binds the app to the current context

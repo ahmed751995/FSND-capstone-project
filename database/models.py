@@ -4,8 +4,8 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, String, Integer, create_engine, DateTime, ForeignKey
 from flask_migrate import Migrate
 
-database_name = "castingAgency"
-database_path = "postgres:///"+database_name
+# database_name = "castingAgency"
+database_path = os.environ['DATABASE_URL']    # "postgres:///"+database_name
 
 db = SQLAlchemy()
 
@@ -19,7 +19,7 @@ def setup_db(app, database_path=database_path):
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.app = app
     db.init_app(app)
-    migrate = Migrate(app, db)
+    # migrate = Migrate(app, db)
 
 
 
