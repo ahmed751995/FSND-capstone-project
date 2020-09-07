@@ -41,7 +41,7 @@ createdb castingAgency
 
 ## Running the server
 
-you can choose the live server or run in terminal the run.sh file which contains all commands needed to run the server
+you can choose the live server or run in terminal the ```run.sh``` file which contains all commands needed to run the server
 
 To run the server, execute:
 
@@ -98,11 +98,11 @@ the API will return an error when requests fail:
 * 404: resource not found
 * 401: Unauthorized 
 
-## setting up Authentication
+## Setting up Authentication
 
-in the endpoints section we will use curl so instructions here will use  terminal to test the end point.
+in the endpoints section we will use curl, so instructions here will use terminal to test the end point.
 
-BaseUrl is referring to either the ```localhost:5000``` or ```https://fsnd-capstone-ahmed751995.herokuapp.com``` so replace ```BaseUrl``` with the one that is more convenient to you .
+BaseUrl is referring to either the ```localhost:5000``` or ```https://fsnd-capstone-ahmed751995.herokuapp.com``` so replace ```BaseUrl``` with the one that is more convenient to you.
 
 replace the ```$TOKEN``` in the sample with the token value
  
@@ -112,7 +112,7 @@ replace the ```$TOKEN``` in the sample with the token value
 
 * General
   * return an object of all movies in the database with success value
-* sample: curl  BaseUrl/movies --header 'Authorization: Bearer $TOKEN'
+* sample: ```curl  BaseUrl/movies --header 'Authorization: Bearer $TOKEN'```
 
 * the GET request should contains a valid jwt token
 	
@@ -139,7 +139,7 @@ replace the ```$TOKEN``` in the sample with the token value
 
 * General
   * return an object of all actors in the database with success value
-* sample: curl  BaseUrl/actors --header 'Authorization: Bearer $TOKEN'
+* sample: ```curl  BaseUrl/actors --header 'Authorization: Bearer $TOKEN'```
 
 * the GET request should contains a valid jwt token
 	
@@ -169,7 +169,7 @@ replace the ```$TOKEN``` in the sample with the token value
   * delete a movie based on the {movie id} specified on url
   * Executive Producer is the only one who has the authorization to delete a movie
 
-* sample: curl --location --request DELETE BaseUrl/movies/2 --header 'Authorization: Bearer $TOKEN'
+* sample: ```curl --location --request DELETE BaseUrl/movies/2 --header 'Authorization: Bearer $TOKEN'```
 
 * the DELETE request should contains a valid jwt token
 	
@@ -186,7 +186,7 @@ replace the ```$TOKEN``` in the sample with the token value
   * delete an actor based on the {actor id} specified on url
   * Executive Producer and Casting Director are the only roles who have the authorization to delete an actor
 
-* sample: curl --location --request DELETE BaseUrl/actors/2 --header 'Authorization: Bearer $TOKEN'
+* sample: ```curl --location --request DELETE BaseUrl/actors/2 --header 'Authorization: Bearer $TOKEN'```
 
 * the DELETE request should contains a valid jwt token
 	
@@ -204,7 +204,7 @@ replace the ```$TOKEN``` in the sample with the token value
   * add new actor to the database
   * Executive Producer and Casting Director are the only roles who have the authorization to post an actor
 
-* sample: curl --location --request POST 'BaseUrl/actors' --header 'Authorization: Bearer $TOKEN' --header 'Content-Type: application/json' --data-raw '{"name": "saif", "age": 18, "gender": "male"}'
+* sample: ```curl --location --request POST 'BaseUrl/actors' --header 'Authorization: Bearer $TOKEN' --header 'Content-Type: application/json' --data-raw '{"name": "saif", "age": 18, "gender": "male"}'```
 
 * the POST request should contains a valid jwt token
 	
@@ -222,7 +222,7 @@ replace the ```$TOKEN``` in the sample with the token value
   * add new movie to the database
   * Executive Producer is the only roles who has the authorization to post a movie
 
-* sample: curl --location --request POST 'BaseUrl/movies' --header 'Authorization: Bearer $TOKEN' --header 'Content-Type: application/json' --data-raw '{"title": "jumanji", "release_date":"3-2-2021"}
+* sample: ```curl --location --request POST 'BaseUrl/movies' --header 'Authorization: Bearer $TOKEN' --header 'Content-Type: application/json' --data-raw '{"title": "jumanji", "release_date":"3-2-2021"}```
 
 * the POST request should contains a valid jwt token
 	
@@ -240,7 +240,7 @@ replace the ```$TOKEN``` in the sample with the token value
   * add new movie to the database
   * Executive Producer and Casting Director are the only roles who have the authorization to patch a movie
 
-* sample: curl --location --request POST 'BaseUrl/movies/3' --header 'Authorization: Bearer $TOKEN' --header 'Content-Type: application/json' --data-raw '{"title": "rush hour 2"}'
+* sample: ```curl --location --request POST 'BaseUrl/movies/3' --header 'Authorization: Bearer $TOKEN' --header 'Content-Type: application/json' --data-raw '{"title": "rush hour 2"}'```
 
 * the PATCH request should contains a valid jwt token
 	
@@ -256,7 +256,7 @@ replace the ```$TOKEN``` in the sample with the token value
   * add new movie to the database
   * Executive Producer and Casting Director are the only roles who have the authorization to patch a movie
 
-* sample: curl --location --request POST 'BaseUrl/actors/2' --header 'Authorization: Bearer $TOKEN' --header 'Content-Type: application/json' --data-raw '{"age": 40}'
+* sample: ```curl --location --request POST 'BaseUrl/actors/2' --header 'Authorization: Bearer $TOKEN' --header 'Content-Type: application/json' --data-raw '{"age": 40}'```
 
 * the PATCH request should contains a valid jwt token
 	
@@ -277,9 +277,9 @@ this app contains postman and unittest, choose the one that is more convenient t
 
 * add the TOKEN to each role 
 
-* run the server by typing in terminal ``` bash run.sh``` or you can you the live server by replacing the {{host}} variable value with the live server Url
+* run the server by typing in terminal ``` bash run.sh``` or you can use the live server by replacing the {{host}} variable value with the live server Url
 
-* (hint) make sure that you use a proper id in delete and patch request
+* (hint) make sure that you are useing a proper id in delete and patch request
 
 
 ## unittest
