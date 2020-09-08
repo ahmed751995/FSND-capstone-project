@@ -37,6 +37,9 @@ to create the database run the followinng bash code in the terminal:
 
 ```bash
 createdb castingAgency 
+python3 manage.py db init
+python3 manage.py db migrate
+python3 manage.py db upgrade
 ```
 
 ## Running the server
