@@ -58,7 +58,7 @@ bash run.sh
 
 the app runs locally and on a live server
 
-* live server Url: https://fsnd-capstone-ahmed751995.herokuapp.com/
+* live server Url: https://fsdn-capstone-ahmed751995.herokuapp.com/
 
 * local Url: http://127.0.0.1:5000/
 
