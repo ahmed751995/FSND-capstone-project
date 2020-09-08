@@ -33,7 +33,7 @@ This will install all of the required packages we selected within the `requireme
 - [Flask-CORS](https://flask-cors.readthedocs.io/en/latest/#) is the extension we'll use to handle cross origin requests from our frontend server. 
 
 ## Database Setup
-from the same directory in terminal run:
+to create the database run the followinng bash code in the terminal:
 
 ```bash
 createdb castingAgency 
@@ -102,9 +102,9 @@ the API will return an error when requests fail:
 
 in the endpoints section we will use curl, so instructions here will use terminal to test the end point.
 
-BaseUrl is referring to either the ```localhost:5000``` or ```https://fsnd-capstone-ahmed751995.herokuapp.com``` so replace ```BaseUrl``` with the one that is more convenient to you.
+BaseUrl is referring to either the ```localhost:5000``` or ```https://fsnd-capstone-ahmed751995.herokuapp.com``` so replace ```BaseUrl``` in the sample with the one that is more convenient to you.
 
-replace the ```$TOKEN``` in the sample with the token value
+replace the ```$TOKEN``` in the sample with the token value.
  
 
 ## Endpoints
@@ -273,7 +273,18 @@ this app contains postman and unittest, choose the one that is more convenient t
 
 ## postman
 
-* import ``` castingAgency.postman_collection.json ``` into postman app 
+
+* create a new castingAgency database (drop it if it is already exist) 
+
+```bash
+dropdb castingAgency
+createdb castingAgency
+```
+
+* copy data to the ```castingAgency``` database by typeing ```psql castingAgency < castingAgency.psql```
+
+
+* import ``` castingAgency.postman_collection.json ``` into postman app
 
 * add the TOKEN to each role 
 
