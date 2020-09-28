@@ -28,7 +28,22 @@ def setup_db(app, database_path=database_path):
 # Models.
 #----------------------------------------------------------------------------#
 
-class Actor(db.Model):
+class Base(db.Model):
+    __abstract__ = True
+    
+    def insert(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def update(self):
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+    
+
+class Actor(Base):
     __tablename__ = 'Actor'
 
     id = Column(Integer, primary_key=True)
@@ -46,17 +61,7 @@ class Actor(db.Model):
         self.age = age
         self.gender = gender
 
-    def insert(self):
-        db.session.add(self)
-        db.session.commit()
-
-    def update(self):
-        db.session.commit()
-
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
-
+   
     def formate(self):
         return {
             'id': self.id,
@@ -66,7 +71,7 @@ class Actor(db.Model):
         }
 
 
-class Movie(db.Model):
+class Movie(Base):
     __tablename__ = 'Movie'
 
     id = Column(Integer, primary_key=True)
@@ -82,17 +87,6 @@ class Movie(db.Model):
         self.title = title
         self.release_date = release_date
 
-    def insert(self):
-        db.session.add(self)
-        db.session.commit()
-
-    def update(self):
-        db.session.commit()
-
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
-
     def formate(self):
         return {
             'id': self.id,
@@ -101,7 +95,7 @@ class Movie(db.Model):
         }
 
 
-class Show(db.Model):
+class Show(Base):
     __tablename__ = 'Show'
     id = Column(Integer, primary_key=True)
     actor_id = Column(Integer, ForeignKey('Actor.id'), nullable=False)
@@ -110,17 +104,6 @@ class Show(db.Model):
     def __init__(self, actor_id, movie_id):
         self.actor_id = actor_id
         self.movie_id = movie_id
-
-    def insert(self):
-        db.session.add(self)
-        db.session.commit()
-
-    def update(self):
-        db.session.commit()
-
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
 
     def formate(self):
         return {
